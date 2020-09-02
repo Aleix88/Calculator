@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,13 +17,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dbP-31-hhs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="295.5"/>
                                 <connections>
                                     <segue destination="CPT-Ao-o5Z" kind="embed" id="r2S-tx-DYk"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJl-yV-RTa">
-                                <rect key="frame" x="0.0" y="296" width="414" height="566"/>
+                                <rect key="frame" x="0.0" y="295.5" width="414" height="566.5"/>
                                 <connections>
                                     <segue destination="umt-Fc-Xft" kind="embed" id="pyP-GQ-BgH"/>
                                 </connections>
@@ -51,9 +52,10 @@
             <objects>
                 <viewController id="CPT-Ao-o5Z" customClass="DisplayViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAB-vx-7jG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="296"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="295.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                        <viewLayoutGuide key="safeArea" id="cOv-g1-IcT"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ls-UW-GeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -65,10 +67,42 @@
             <objects>
                 <viewController id="umt-Fc-Xft" customClass="ButtonsViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R4Z-VW-ntP">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="566"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="566.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q5N-cz-HUD">
+                                <rect key="frame" x="30" y="64" width="354" height="492.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Q7r-7r-fs9">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XRU-D5-4Jc">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WWt-PV-bwS">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q5N-cz-HUD" secondAttribute="trailing" constant="10" id="MFC-1A-DlQ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Q5N-cz-HUD" secondAttribute="bottom" constant="10" id="MVk-TU-s3b"/>
+                            <constraint firstItem="Q5N-cz-HUD" firstAttribute="top" secondItem="R4Z-VW-ntP" secondAttribute="topMargin" constant="20" id="PZL-cv-TSr"/>
+                            <constraint firstItem="Q5N-cz-HUD" firstAttribute="leading" secondItem="R4Z-VW-ntP" secondAttribute="leadingMargin" constant="10" id="WWK-B6-I2c"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pyE-Ka-tkX"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="Q5N-cz-HUD" id="h2O-75-eoy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8p2-zd-ajv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

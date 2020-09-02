@@ -11,6 +11,7 @@
 		19714E5B24FFCB620089D118 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19714E5A24FFCB620089D118 /* ButtonsViewController.swift */; };
 		19714E5E24FFD2570089D118 /* SimpleButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19714E5C24FFD2570089D118 /* SimpleButtonCollectionViewCell.swift */; };
 		19714E5F24FFD2570089D118 /* SimpleButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19714E5D24FFD2570089D118 /* SimpleButtonCollectionViewCell.xib */; };
+		19714E6224FFEA770089D118 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19714E6124FFEA770089D118 /* UIColor+RGB.swift */; };
 		19BC97C924FFA27D0010007D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97C824FFA27D0010007D /* AppDelegate.swift */; };
 		19BC97CB24FFA27D0010007D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97CA24FFA27D0010007D /* SceneDelegate.swift */; };
 		19BC97D024FFA27D0010007D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19BC97CE24FFA27D0010007D /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		19714E5A24FFCB620089D118 /* ButtonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		19714E5C24FFD2570089D118 /* SimpleButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		19714E5D24FFD2570089D118 /* SimpleButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SimpleButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		19714E6124FFEA770089D118 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		19BC97C524FFA27D0010007D /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BC97C824FFA27D0010007D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19BC97CA24FFA27D0010007D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,14 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		19714E6024FFEA490089D118 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				19714E6124FFEA770089D118 /* UIColor+RGB.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		19BC97BC24FFA27C0010007D = {
 			isa = PBXGroup;
 			children = (
@@ -133,6 +143,7 @@
 		19BC97C724FFA27D0010007D /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				19714E6024FFEA490089D118 /* Extensions */,
 				19714E5324FFCB060089D118 /* Controller */,
 				19714E5224FFCB040089D118 /* Model */,
 				19714E5124FFCAFF0089D118 /* View */,
@@ -298,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				19BC97F924FFA2A50010007D /* MainViewController.swift in Sources */,
+				19714E6224FFEA770089D118 /* UIColor+RGB.swift in Sources */,
 				19BC97C924FFA27D0010007D /* AppDelegate.swift in Sources */,
 				19714E5E24FFD2570089D118 /* SimpleButtonCollectionViewCell.swift in Sources */,
 				19714E5B24FFCB620089D118 /* ButtonsViewController.swift in Sources */,

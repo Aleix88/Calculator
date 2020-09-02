@@ -18,42 +18,38 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uKl-hI-jNZ">
                         <rect key="frame" x="2" y="2" width="137" height="137"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3C-IJ-OY6">
-                                <rect key="frame" x="5" y="5" width="127" height="127"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wis-id-1VF">
-                                        <rect key="frame" x="5" y="5" width="117" height="117"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="1"/>
-                                        <connections>
-                                            <action selector="buttonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9eb-0z-pCY"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstItem="wis-id-1VF" firstAttribute="top" secondItem="Y3C-IJ-OY6" secondAttribute="top" constant="5" id="GTs-rx-PNN"/>
-                                    <constraint firstAttribute="trailing" secondItem="wis-id-1VF" secondAttribute="trailing" constant="5" id="PZE-0r-nbe"/>
-                                    <constraint firstItem="wis-id-1VF" firstAttribute="leading" secondItem="Y3C-IJ-OY6" secondAttribute="leading" constant="5" id="WmP-6N-zvv"/>
-                                    <constraint firstAttribute="bottom" secondItem="wis-id-1VF" secondAttribute="bottom" constant="5" id="fLx-eC-wNB"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.61176470588235299" green="0.51764705882352935" blue="0.9882352941176471" alpha="0.1055222602739726" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Y3C-IJ-OY6" firstAttribute="leading" secondItem="uKl-hI-jNZ" secondAttribute="leading" constant="5" id="3bb-u1-e4b"/>
-                            <constraint firstItem="Y3C-IJ-OY6" firstAttribute="top" secondItem="uKl-hI-jNZ" secondAttribute="top" constant="5" id="9Kj-Zq-g66"/>
-                            <constraint firstAttribute="trailing" secondItem="Y3C-IJ-OY6" secondAttribute="trailing" constant="5" id="RYX-e0-yZ2"/>
                             <constraint firstAttribute="width" secondItem="uKl-hI-jNZ" secondAttribute="height" multiplier="1:1" id="Ud6-zv-sVT"/>
-                            <constraint firstAttribute="bottom" secondItem="Y3C-IJ-OY6" secondAttribute="bottom" constant="5" id="sjy-pR-dT6"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3C-IJ-OY6">
+                        <rect key="frame" x="7" y="7" width="127" height="127"/>
+                        <color key="backgroundColor" red="0.61176470588235299" green="0.51764705882352935" blue="0.83921568627450982" alpha="0.59035209760273977" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wis-id-1VF">
+                        <rect key="frame" x="12" y="12" width="117" height="117"/>
+                        <state key="normal" title="1">
+                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                        </state>
+                        <connections>
+                            <action selector="buttonPressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9eb-0z-pCY"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="Y3C-IJ-OY6" firstAttribute="top" secondItem="uKl-hI-jNZ" secondAttribute="top" constant="5" id="6FM-9G-VaJ"/>
+                <constraint firstItem="Y3C-IJ-OY6" firstAttribute="bottom" secondItem="uKl-hI-jNZ" secondAttribute="bottom" constant="-5" id="Cqy-ch-Oif"/>
                 <constraint firstAttribute="trailing" secondItem="uKl-hI-jNZ" secondAttribute="trailing" constant="2" id="Hmy-Kj-a58"/>
                 <constraint firstItem="uKl-hI-jNZ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Ji9-vE-UrK"/>
+                <constraint firstItem="wis-id-1VF" firstAttribute="leading" secondItem="uKl-hI-jNZ" secondAttribute="leading" constant="10" id="KrH-TA-AwN"/>
+                <constraint firstItem="wis-id-1VF" firstAttribute="top" secondItem="uKl-hI-jNZ" secondAttribute="top" constant="10" id="PwO-WE-77X"/>
+                <constraint firstItem="Y3C-IJ-OY6" firstAttribute="leading" secondItem="uKl-hI-jNZ" secondAttribute="leading" constant="5" id="SJk-PW-rze"/>
+                <constraint firstItem="wis-id-1VF" firstAttribute="bottom" secondItem="uKl-hI-jNZ" secondAttribute="bottom" constant="-10" id="VlS-Dc-9Aj"/>
+                <constraint firstItem="wis-id-1VF" firstAttribute="trailing" secondItem="uKl-hI-jNZ" secondAttribute="trailing" constant="-10" id="XQs-CR-A79"/>
+                <constraint firstItem="Y3C-IJ-OY6" firstAttribute="trailing" secondItem="uKl-hI-jNZ" secondAttribute="trailing" constant="-5" id="mdE-JC-zDz"/>
                 <constraint firstItem="uKl-hI-jNZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="pKF-ao-N1I"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

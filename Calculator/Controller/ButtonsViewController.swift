@@ -28,6 +28,7 @@ class ButtonsViewController: UIViewController {
         collectionView.register(UINib(nibName: SimpleButtonCollectionViewCell.ID, bundle: nil), forCellWithReuseIdentifier: SimpleButtonCollectionViewCell.ID)
         collectionView.delegate = self
         collectionView.bounces = false
+        collectionView.clipsToBounds = false
     }
 
 }

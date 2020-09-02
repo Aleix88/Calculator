@@ -39,7 +39,9 @@ extension ButtonsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimpleButtonCollectionViewCell.ID, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimpleButtonCollectionViewCell.ID, for: indexPath) as! SimpleButtonCollectionViewCell
+        let provider = ButtonsProvider()
+        cell.content = provider.buttonAt(indexPath)
         return cell
     }
 }

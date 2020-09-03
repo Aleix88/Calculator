@@ -13,6 +13,8 @@ class ButtonsViewController: UIViewController {
     //MARK: Variables
     @IBOutlet weak private var collectionView: UICollectionView!
     
+    var buttonsDelegate: CellButtonDelegate?
+    
     //MARK: Constants
     private let buttonsPerRow = 4
     private let nRows = 5
@@ -42,6 +44,7 @@ extension ButtonsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimpleButtonCollectionViewCell.ID, for: indexPath) as! SimpleButtonCollectionViewCell
         let provider = ButtonsProvider()
         cell.content = provider.buttonAt(indexPath)
+        cell.delegate = self.buttonsDelegate
         return cell
     }
 }
@@ -62,3 +65,4 @@ extension ButtonsViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+

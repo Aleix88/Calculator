@@ -28,7 +28,7 @@
                         <color key="backgroundColor" red="0.61176470588235299" green="0.51764705882352935" blue="0.83921568627450982" alpha="0.59035209760273977" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wis-id-1VF">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wis-id-1VF" customClass="CalculatorButton" customModule="Calculator" customModuleProvider="target">
                         <rect key="frame" x="12" y="12" width="117" height="117"/>
                         <state key="normal" title="1">
                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>

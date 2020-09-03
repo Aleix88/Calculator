@@ -10,21 +10,38 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    //MARK: Variables
+    private var displayViewController: DisplayViewController?
+    private var buttonsViewController: ButtonsViewController?
+    //MARK: Constants
+    
+    //MARK: Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
 
-        // Do any additional setup after loading the view.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.buttonsViewController?.buttonsDelegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.destination {
+        case let displayViewController as DisplayViewController:
+            self.displayViewController = displayViewController
+        case let buttonsViewController as ButtonsViewController:
+            self.buttonsViewController = buttonsViewController
+        default:
+            break
+        }
     }
-    */
 
+}
+
+extension MainViewController: CellButtonDelegate {
+    func didClickButton(type: ButtonType, content: String?) {
+        print(type, content)
+    }
 }

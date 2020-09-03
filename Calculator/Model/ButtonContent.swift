@@ -16,10 +16,12 @@ class ButtonContent {
     
     var content: String?
     var type: ButtonType!
+    var imageName: String?
     
-    init (content: String? = nil, type: ButtonType) {
+    init (content: String? = nil, type: ButtonType, imageName: String? = nil) {
         self.content = content
         self.type = type
+        self.imageName = imageName
     }
     
 }

@@ -15,13 +15,15 @@ class SimpleButtonCollectionViewCell: UICollectionViewCell {
     //MARK: Variables
     @IBOutlet weak private var interiorCircleView: UIView!
     @IBOutlet weak private var exteriorCircleView: UIView!
-    @IBOutlet weak private var cellButton: UIButton!
+    @IBOutlet weak private var cellButton: CalculatorButton!
     
     var content: ButtonContent? {
         didSet {
             prepareContent()
         }
     }
+    
+    var delegate: CellButtonDelegate?
     
     //MARK: Constants
     private let maxExteriorAlpha: CGFloat = 0.1
@@ -32,6 +34,7 @@ class SimpleButtonCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCircles()
+        setupButton()
     }
     
     override func draw(_ rect: CGRect) {
@@ -42,7 +45,6 @@ class SimpleButtonCollectionViewCell: UICollectionViewCell {
     
     private func prepareContent() {
         guard let content = self.content else { return }
-        self.cellButton.setTitle(content.content, for: .normal)
         let prepareHandlers = [
             ButtonType.number:prepareNumber,
             .equal:prepareEqual,
@@ -55,21 +57,45 @@ class SimpleButtonCollectionViewCell: UICollectionViewCell {
     }
     
     private func prepareNumber() {
-        self.cellButton.setTitleColor(.black, for: .normal)
+        self.cellButton.setTitleColor(.darkGray, for: .normal)
+        self.cellButton.setTitle(content?.content ?? "", for: .normal)
     }
     
     private func prepareSpecialButton() {
-        self.cellButton.setTitleColor(.purple, for: .normal)
+        if let imageName = content?.imageName {
+            self.cellButton.setImage(UIImage(named: imageName), for: .normal)
+            let insets = self.cellButton.frame.width * 0.15
+            self.cellButton.imageEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
+            self.cellButton.setTitle("", for: .normal)
+
+        } else {
+            self.cellButton.setTitle(self.content?.content ?? "", for: .normal)
+        }
+        self.cellButton.tintColor = UIColor.rgb(r: 0, g: 112, b: 248)
+        self.cellButton.setTitleColor(UIColor.rgb(r: 0, g: 112, b: 248), for: .normal)
     }
     
     private func prepareEqual() {
-        self.cellButton.backgroundColor = .purple
-        self.cellButton.setTitleColor(.white, for: .normal)
+        if let imageName = content?.imageName {
+            self.cellButton.setImage(UIImage(named: imageName), for: .normal)
+            let insets = self.cellButton.frame.width * 0.15
+            self.cellButton.imageEdgeInsets = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
+            self.cellButton.setTitle("", for: .normal)
+        }
+        self.cellButton.backgroundColor = UIColor.rgb(r: 0, g: 112, b: 248)
+        self.cellButton.tintColor = .white
+    }
+    
+    private func setupButton() {
+        cellButton.titleLabel?.font = UIFont(name: "Avenir Next", size: 30)
+        cellButton.titleLabel?.minimumScaleFactor = 0.1
+        cellButton.titleLabel?.numberOfLines = 1
+        cellButton.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
     private func setupCircles() {
-        interiorCircleView.backgroundColor = UIColor.rgb(r: 156, g: 132, b: 214)
-        exteriorCircleView.backgroundColor = UIColor.rgb(r: 156, g: 132, b: 214)
+        interiorCircleView.backgroundColor = UIColor.rgb(r: 0, g: 112, b: 248)
+        exteriorCircleView.backgroundColor = UIColor.rgb(r: 0, g: 112, b: 248)
         interiorCircleView.alpha = 0
         exteriorCircleView.alpha = 0
         self.clipsToBounds = false
@@ -77,6 +103,9 @@ class SimpleButtonCollectionViewCell: UICollectionViewCell {
     
     @IBAction func buttonPressed(_ sender: Any) {
         guard content?.type != .empty else {return}
+
+        delegate?.didClickButton(type: content!.type, content: content?.content)
+        
         if (content?.type != .equal) {
             self.cellButton.backgroundColor = .white
         }

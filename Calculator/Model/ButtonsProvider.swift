@@ -29,7 +29,7 @@ class ButtonsProvider {
         ButtonContent(content: "3", type: .number),
         ButtonContent(content: "+", type: .sum, imageName: "add"),
         ButtonContent(content: "0", type: .number),
-        ButtonContent(content: "", type: .empty),
+        ButtonContent(content: ".", type: .point),
         ButtonContent(content: "", type: .empty),
         ButtonContent(content: "=", type: .equal, imageName: "equal"),
     ]

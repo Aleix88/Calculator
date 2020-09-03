@@ -86,6 +86,15 @@ class Calculator {
         nextNumber = ""
     }
     
+    func nextNumberLength() -> Int {
+        guard (nextNumber.last != nil) else {return 0}
+        return nextNumber.last! == "." ? nextNumber.count - 1 : nextNumber.count
+    }
+    
+    func nextNumberIsDecimal() -> Bool {
+        return nextNumber.contains(".")
+    }
+    
     //MARK: Private functions
     
     private func isOperationSymbol(_ symbol: String) -> Bool {

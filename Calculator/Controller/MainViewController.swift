@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     //MARK: Constants
     
     private let calulator = Calculator()
+    private let maxNumberLength = 9
     
     //MARK: Life Cycle
     
@@ -65,6 +66,8 @@ extension MainViewController: CellButtonDelegate {
             self.displayViewController?.moveBotToTop()
             self.displayViewController?.addTopChar(char: content)
         default:
+            guard self.calulator.nextNumberLength() < self.maxNumberLength else {return}
+            if content == "." && self.calulator.nextNumberIsDecimal() {return}
             self.calulator.addDigit(digit: content)
             self.displayViewController?.addBottomChar(char: content)
         }

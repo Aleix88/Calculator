@@ -9,7 +9,7 @@
 import Foundation
 
 enum ButtonType {
-    case number, equal, C, MC, remove, divide, multiply, substract, sum, empty
+    case number, equal, C, MC, remove, divide, multiply, substract, sum, empty, point
 }
 
 class ButtonContent {

@@ -36,6 +36,7 @@ class Calculator {
     }
     
     func deleteLastDigit() {
+        guard !nextNumber.isEmpty else {return}
         nextNumber.removeLast()
     }
     

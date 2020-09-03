@@ -19,7 +19,7 @@ class ButtonsProvider {
         ButtonContent(content: "7", type: .number),
         ButtonContent(content: "8", type: .number),
         ButtonContent(content: "9", type: .number),
-        ButtonContent(content: "x", type: .multiply, imageName: "multiply"),
+        ButtonContent(content: "*", type: .multiply, imageName: "multiply"),
         ButtonContent(content: "4", type: .number),
         ButtonContent(content: "5", type: .number),
         ButtonContent(content: "6", type: .number),

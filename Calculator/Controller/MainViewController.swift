@@ -13,7 +13,10 @@ class MainViewController: UIViewController {
     //MARK: Variables
     private var displayViewController: DisplayViewController?
     private var buttonsViewController: ButtonsViewController?
+
     //MARK: Constants
+    
+    private let calulator = Calculator()
     
     //MARK: Life Cycle
     
@@ -45,13 +48,25 @@ extension MainViewController: CellButtonDelegate {
         guard let content = content else {return}
         switch type {
         case .C:
+            self.calulator.clearAll()
             self.displayViewController?.clearDisplay()
         break
         case .remove:
+            self.calulator.deleteLastDigit()
             self.displayViewController?.removeLastInput()
         break
+        case .equal:
+            let result = calulator.calculate()
+            self.displayViewController?.moveBotToTop()
+            self.displayViewController?.bottomText(text: result)
+            break
+        case .sum, .divide, .multiply, .substract:
+            self.calulator.addOperationSymbol(symbol: content)
+            self.displayViewController?.moveBotToTop()
+            self.displayViewController?.addTopChar(char: content)
         default:
-            self.displayViewController?.addSymbol(symbol: content, type: type)
+            self.calulator.addDigit(digit: content)
+            self.displayViewController?.addBottomChar(char: content)
         }
         print(type, content)
     }

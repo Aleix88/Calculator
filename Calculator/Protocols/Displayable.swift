@@ -9,7 +9,11 @@
 import Foundation
 
 protocol Displayable {
-    func addSymbol(symbol: String, type: ButtonType)
+    func addBottomChar(char: String)
+    func addTopChar(char: String)
+    func bottomText(text: String)
+    func topText(text: String)
     func clearDisplay()
     func removeLastInput()
+    func moveBotToTop()
 }

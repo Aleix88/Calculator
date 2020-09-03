@@ -26,20 +26,42 @@ class DisplayViewController: UIViewController {
 
 //MARK: Displayable
 extension DisplayViewController: Displayable {
-    func addSymbol(symbol: String, type: ButtonType) {
+    func bottomText(text: String) {
+        self.inputLabel.text = text
+    }
+    
+    func topText(text: String) {
+        self.operationLabel.text = text
+    }
+    
+    func addBottomChar(char: String) {
         if inputLabel.text == nil {
             inputLabel.text = ""
         }
-        guard let input = inputLabel.text, input.count + 1 <= 9 else {
-            return
-        }
+        
         UIView.transition(with: inputLabel, duration: 0.1, options: .transitionCrossDissolve, animations: { [weak self] in
-            self?.inputLabel.text! += symbol
+            self?.inputLabel.text! += char
         }, completion: nil)
+    }
+    
+    func addTopChar(char: String) {
+        if ((operationLabel.text ?? "").isEmpty) {
+            operationLabel.text = ""
+        }
+        operationLabel.text! += char
+    }
+    
+    func moveBotToTop() {
+        if ((operationLabel.text ?? "").isEmpty) {
+            operationLabel.text = ""
+        }
+        operationLabel.text! += inputLabel.text ?? ""
+        inputLabel.text = ""
     }
     
     func clearDisplay() {
         self.inputLabel.text = ""
+        self.operationLabel.text = ""
     }
     
     func removeLastInput() {

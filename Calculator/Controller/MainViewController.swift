@@ -43,7 +43,16 @@ class MainViewController: UIViewController {
 extension MainViewController: CellButtonDelegate {
     func didClickButton(type: ButtonType, content: String?) {
         guard let content = content else {return}
-        self.displayViewController?.addSymbol(symbol: content, type: type)
+        switch type {
+        case .C:
+            self.displayViewController?.clearDisplay()
+        break
+        case .remove:
+            self.displayViewController?.removeLastInput()
+        break
+        default:
+            self.displayViewController?.addSymbol(symbol: content, type: type)
+        }
         print(type, content)
     }
 }

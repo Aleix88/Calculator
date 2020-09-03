@@ -10,4 +10,6 @@ import Foundation
 
 protocol Displayable {
     func addSymbol(symbol: String, type: ButtonType)
+    func clearDisplay()
+    func removeLastInput()
 }

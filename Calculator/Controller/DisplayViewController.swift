@@ -30,9 +30,20 @@ extension DisplayViewController: Displayable {
         if inputLabel.text == nil {
             inputLabel.text = ""
         }
+        guard let input = inputLabel.text, input.count + 1 <= 9 else {
+            return
+        }
         UIView.transition(with: inputLabel, duration: 0.1, options: .transitionCrossDissolve, animations: { [weak self] in
             self?.inputLabel.text! += symbol
         }, completion: nil)
+    }
+    
+    func clearDisplay() {
+        self.inputLabel.text = ""
+    }
+    
+    func removeLastInput() {
+        self.inputLabel.text = String((self.inputLabel.text ?? "").dropLast())
     }
 }
 

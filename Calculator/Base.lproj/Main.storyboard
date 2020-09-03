@@ -52,11 +52,38 @@
             <objects>
                 <viewController id="CPT-Ao-o5Z" customClass="DisplayViewController" customModule="Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAB-vx-7jG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="295.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="295"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0L3-Fz-Gob">
+                                <rect key="frame" x="10" y="148" width="394" height="147.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O0p-b4-Eo6">
+                                <rect key="frame" x="10" y="148" width="394" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="0L3-Fz-Gob" firstAttribute="leading" secondItem="cOv-g1-IcT" secondAttribute="leading" constant="10" id="Fb9-ao-yjk"/>
+                            <constraint firstItem="cOv-g1-IcT" firstAttribute="trailing" secondItem="0L3-Fz-Gob" secondAttribute="trailing" constant="10" id="W7v-Tm-y7y"/>
+                            <constraint firstItem="0L3-Fz-Gob" firstAttribute="top" secondItem="O0p-b4-Eo6" secondAttribute="bottom" id="XBX-L4-3Ll"/>
+                            <constraint firstItem="0L3-Fz-Gob" firstAttribute="height" secondItem="hAB-vx-7jG" secondAttribute="height" multiplier="0.5" id="ieq-lh-OrK"/>
+                            <constraint firstItem="cOv-g1-IcT" firstAttribute="bottom" secondItem="0L3-Fz-Gob" secondAttribute="bottom" id="kbh-Ln-YnR"/>
+                            <constraint firstItem="O0p-b4-Eo6" firstAttribute="leading" secondItem="cOv-g1-IcT" secondAttribute="leading" constant="10" id="rLQ-NS-y01"/>
+                            <constraint firstItem="cOv-g1-IcT" firstAttribute="trailing" secondItem="O0p-b4-Eo6" secondAttribute="trailing" constant="10" id="uYo-km-4K7"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="cOv-g1-IcT"/>
                     </view>
+                    <connections>
+                        <outlet property="inputLabel" destination="0L3-Fz-Gob" id="hLY-gN-tXK"/>
+                        <outlet property="operationLabel" destination="O0p-b4-Eo6" id="E1o-PL-3kp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9ls-UW-GeM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

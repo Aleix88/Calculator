@@ -16,6 +16,7 @@
 		19714E6625002F1C0089D118 /* ButtonsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19714E6525002F1C0089D118 /* ButtonsProvider.swift */; };
 		198A02722501045D00B68E39 /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A02712501045D00B68E39 /* CalculatorButton.swift */; };
 		198A0275250107D700B68E39 /* CellButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A0274250107D700B68E39 /* CellButtonDelegate.swift */; };
+		198A027725010B8B00B68E39 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A027625010B8B00B68E39 /* Displayable.swift */; };
 		19BC97C924FFA27D0010007D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97C824FFA27D0010007D /* AppDelegate.swift */; };
 		19BC97CB24FFA27D0010007D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97CA24FFA27D0010007D /* SceneDelegate.swift */; };
 		19BC97D024FFA27D0010007D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19BC97CE24FFA27D0010007D /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		19714E6525002F1C0089D118 /* ButtonsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsProvider.swift; sourceTree = "<group>"; };
 		198A02712501045D00B68E39 /* CalculatorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
 		198A0274250107D700B68E39 /* CellButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellButtonDelegate.swift; sourceTree = "<group>"; };
+		198A027625010B8B00B68E39 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		19BC97C524FFA27D0010007D /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BC97C824FFA27D0010007D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19BC97CA24FFA27D0010007D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				198A0274250107D700B68E39 /* CellButtonDelegate.swift */,
+				198A027625010B8B00B68E39 /* Displayable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				19714E6425002D2E0089D118 /* ButtonContent.swift in Sources */,
 				19BC97CB24FFA27D0010007D /* SceneDelegate.swift in Sources */,
 				19714E5924FFCB490089D118 /* DisplayViewController.swift in Sources */,
+				198A027725010B8B00B68E39 /* Displayable.swift in Sources */,
 				198A02722501045D00B68E39 /* CalculatorButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

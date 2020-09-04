@@ -63,8 +63,8 @@ class Calculator {
         let expression = NSExpression(format: numericExpression)
         let result = expression.expressionValue(with: nil, context: nil) as! Double
         clearAll()
-        return String(result)
-        
+        self.nextNumber = String(result)
+        return self.nextNumber
     }
     
     func clearAll() {

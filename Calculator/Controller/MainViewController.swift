@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     //MARK: Variables
     private var displayViewController: DisplayViewController?
     private var buttonsViewController: ButtonsViewController?
-    
+    private var lastResult: String = ""
     //MARK: Constants
     
     private let calulator = Calculator()
@@ -52,6 +52,7 @@ extension MainViewController: CellButtonDelegate {
         case .C:
             self.calulator.clearAll()
             self.displayViewController?.clearDisplay()
+            self.lastResult = ""
         break
         case .remove:
             self.calulator.deleteLastDigit()
@@ -61,9 +62,16 @@ extension MainViewController: CellButtonDelegate {
             let result = calulator.calculate()
             self.displayViewController?.moveBotToTop()
             self.displayViewController?.bottomText(text: result)
+            self.lastResult = result
             break
         case .sum, .divide, .multiply, .substract:
             self.calulator.addOperationSymbol(symbol: content)
+            if (!self.lastResult.isEmpty) {
+                self.displayViewController?.topText(text: self.lastResult)
+                self.displayViewController?.bottomText(text: "")
+                self.displayViewController?.addTopChar(char: content)
+                return
+            }
             self.displayViewController?.moveBotToTop()
             self.displayViewController?.addTopChar(char: content)
         default:

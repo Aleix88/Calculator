@@ -18,6 +18,7 @@
 		198A0275250107D700B68E39 /* CellButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A0274250107D700B68E39 /* CellButtonDelegate.swift */; };
 		198A027725010B8B00B68E39 /* Displayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A027625010B8B00B68E39 /* Displayable.swift */; };
 		198A027925012AB000B68E39 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 198A027825012AB000B68E39 /* Calculator.swift */; };
+		198A02802502490300B68E39 /* keyboard_sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 198A027F2502490300B68E39 /* keyboard_sound.mp3 */; };
 		19BC97C924FFA27D0010007D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97C824FFA27D0010007D /* AppDelegate.swift */; };
 		19BC97CB24FFA27D0010007D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19BC97CA24FFA27D0010007D /* SceneDelegate.swift */; };
 		19BC97D024FFA27D0010007D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19BC97CE24FFA27D0010007D /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		198A0274250107D700B68E39 /* CellButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellButtonDelegate.swift; sourceTree = "<group>"; };
 		198A027625010B8B00B68E39 /* Displayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Displayable.swift; sourceTree = "<group>"; };
 		198A027825012AB000B68E39 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		198A027F2502490300B68E39 /* keyboard_sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = keyboard_sound.mp3; sourceTree = "<group>"; };
 		19BC97C524FFA27D0010007D /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BC97C824FFA27D0010007D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		19BC97CA24FFA27D0010007D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 		19BC97C724FFA27D0010007D /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				198A027F2502490300B68E39 /* keyboard_sound.mp3 */,
 				198A02732501079400B68E39 /* Protocols */,
 				19714E6024FFEA490089D118 /* Extensions */,
 				19714E5324FFCB060089D118 /* Controller */,
@@ -306,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				198A02802502490300B68E39 /* keyboard_sound.mp3 in Resources */,
 				19714E5F24FFD2570089D118 /* SimpleButtonCollectionViewCell.xib in Resources */,
 				19BC97D524FFA27F0010007D /* LaunchScreen.storyboard in Resources */,
 				19BC97D224FFA27F0010007D /* Assets.xcassets in Resources */,

@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import AVFoundation
 
-class CalculatorButton: UIButton, UIInputViewAudioFeedback {
+class CalculatorButton: UIButton {
     
+    //MARK: Variables
+    var audioPlayer: AVAudioPlayer!
     var enableInputClicksWhenVisible: Bool {
         return true
     }
     
+    //MARK: Life Cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -24,7 +28,14 @@ class CalculatorButton: UIButton, UIInputViewAudioFeedback {
     }
     
     @objc func pressed () {
-        UIDevice.current.playInputClick()
+        if let soundURL = Bundle.main.url(forResource: "keyboard_sound", withExtension: "mp3") {
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            } catch {
+                print(error)
+            }
+            audioPlayer.play()
+        }
     }
     
 }

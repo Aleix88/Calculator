@@ -11,7 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     //MARK: Variables
-    private var displayViewController: DisplayViewController?
+    private var display: Displayable?
     private var buttonsViewController: ButtonsViewController?
     private var lastResult: String = ""
     private var lastExpression: String = ""
@@ -36,7 +36,7 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.destination {
         case let displayViewController as DisplayViewController:
-            self.displayViewController = displayViewController
+            self.display = displayViewController as Displayable
         case let buttonsViewController as ButtonsViewController:
             self.buttonsViewController = buttonsViewController
         default:
@@ -50,7 +50,7 @@ extension MainViewController: CellButtonDelegate {
     
     func clear() {
         self.calulator.clearAll()
-        self.displayViewController?.clearDisplay()
+        self.display?.clearDisplay()
         self.lastResult = ""
         self.lastSymbolWasOperator = false
     }
@@ -59,38 +59,38 @@ extension MainViewController: CellButtonDelegate {
         self.lastSymbolWasOperator = false
         let result = calulator.calculate()
         if (!self.lastResult.isEmpty && !calulator.isOperationSymbol(String(self.lastResult.first!))) {
-            self.displayViewController?.clearTop()
+            self.display?.clearTop()
         }
         if (!self.lastResult.isEmpty && calulator.isOperationSymbol(String(self.lastResult.first!))) {
-            self.displayViewController?.topText(text: self.lastResult + self.lastExpression)
+            self.display?.topText(text: self.lastResult + self.lastExpression)
         } else {
-            self.displayViewController?.moveBotToTop()
+            self.display?.moveBotToTop()
         }
-        self.displayViewController?.bottomText(text: result)
+        self.display?.bottomText(text: result)
         self.lastResult = result
     }
     
     func delete() {
         self.lastSymbolWasOperator = false
         self.calulator.deleteLastDigit()
-        self.displayViewController?.removeLastInput()
+        self.display?.removeLastInput()
     }
     
     func addOperator(operatorSymbol: String) {
-        if (self.lastSymbolWasOperator) {self.displayViewController?.removeLastTop()}
+        if (self.lastSymbolWasOperator) {self.display?.removeLastTop()}
         self.lastExpression = ""
         self.lastSymbolWasOperator = true
         self.calulator.addOperationSymbol(symbol: operatorSymbol)
         if (!self.lastResult.isEmpty) {
-            self.displayViewController?.topText(text: self.lastResult)
-            self.displayViewController?.bottomText(text: "")
-            self.displayViewController?.addTopChar(char: operatorSymbol)
+            self.display?.topText(text: self.lastResult)
+            self.display?.bottomText(text: "")
+            self.display?.addTopChar(char: operatorSymbol)
             self.lastExpression += operatorSymbol
             self.lastResult = ""
             return
         }
-        self.displayViewController?.moveBotToTop()
-        self.displayViewController?.addTopChar(char: operatorSymbol)
+        self.display?.moveBotToTop()
+        self.display?.addTopChar(char: operatorSymbol)
         self.lastExpression += operatorSymbol
     }
     
@@ -99,7 +99,7 @@ extension MainViewController: CellButtonDelegate {
         if number == "." && self.calulator.nextNumberIsDecimal() {return}
         self.lastSymbolWasOperator = false
         self.calulator.addDigit(digit: number)
-        self.displayViewController?.addBottomChar(char: number)
+        self.display?.addBottomChar(char: number)
         self.lastExpression += number
     }
     

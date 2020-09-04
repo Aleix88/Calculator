@@ -43,7 +43,7 @@ class Calculator {
     }
     
     func addOperationSymbol(symbol: String) {
-        guard isOperationSymbol(symbol) else {
+        guard isOperationSymbol(symbol) && !nextNumber.isEmpty else {
             return
         }
         previousExpression = ""

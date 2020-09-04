@@ -52,6 +52,7 @@ extension MainViewController: CellButtonDelegate {
         self.calulator.clearAll()
         self.display?.clearDisplay()
         self.lastResult = ""
+        self.lastExpression = ""
         self.lastSymbolWasOperator = false
     }
     
@@ -77,6 +78,7 @@ extension MainViewController: CellButtonDelegate {
     }
     
     func addOperator(operatorSymbol: String) {
+        guard !self.lastExpression.isEmpty else {return}
         if (self.lastSymbolWasOperator) {self.display?.removeLastTop()}
         self.lastExpression = ""
         self.lastSymbolWasOperator = true

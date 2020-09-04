@@ -13,7 +13,7 @@ class MainViewController: UIViewController {
     //MARK: Variables
     private var displayViewController: DisplayViewController?
     private var buttonsViewController: ButtonsViewController?
-
+    
     //MARK: Constants
     
     private let calulator = Calculator()
@@ -45,6 +45,7 @@ class MainViewController: UIViewController {
 }
 
 extension MainViewController: CellButtonDelegate {
+    
     func didClickButton(type: ButtonType, content: String?) {
         guard let content = content else {return}
         switch type {

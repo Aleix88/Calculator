@@ -18,11 +18,10 @@ enum CaculatorError: Error {
 class Calculator {
     
     //MARK:Constants
-    private let errorResult = "ERROR"
     
     //MARK:Variables
     
-    var operationString: String = ""
+    var numericExpression: String = ""
     var nextNumber: String = ""
     
     //MARK: Public Functions
@@ -44,46 +43,32 @@ class Calculator {
         guard isOperationSymbol(symbol) else {
             return
         }
-        if !operationString.isEmpty && String(operationString.last!) == symbol {
-            operationString.removeLast()
-            operationString += symbol
+        if !numericExpression.isEmpty && String(numericExpression.last!) == symbol && nextNumber.isEmpty {
+            numericExpression.removeLast()
+            numericExpression += symbol
             return
         }
-        operationString.append(nextNumber)
+        numericExpression.append(nextNumber)
         nextNumber = ""
-        operationString += symbol
+        numericExpression += symbol
     }
     
     func calculate() -> String {
-        operationString.append(nextNumber)
-        var result: Float = 0.0
-        var numbers = operationString.components(separatedBy: ["+","-","*","/"])
-        var symbols = operationString.filter({(char) in return Int(String(char)) == nil && char != "."})
+        numericExpression.append(nextNumber)
+        let numbers = numericExpression.components(separatedBy: ["+","-","*","/"])
+        let symbols = numericExpression.filter({(char) in return Int(String(char)) == nil && char != "."})
         if (numbers.count - 1 != symbols.count) {
-            numbers.append(String(getMeaninglessNumberFor(symbol: String(symbols.last!))))
+            numericExpression.append(String(getMeaninglessNumberFor(symbol: String(symbols.last!))))
         }
-        while numbers.count > 1 {
-            let leftRealNumber = Float(numbers[0]) ?? 0
-            let rightRealNumber = Float(numbers[1]) ?? 0
-            numbers.removeFirst()
-            numbers.removeFirst()
-            do {
-                result = try performOperation(leftNum: leftRealNumber, rightNum: rightRealNumber, symbol: String(symbols.first!))
-                numbers.insert(String(result), at: 0)
-                symbols.removeFirst()
-            } catch {
-                clearAll()
-                return errorResult
-            }
-        }
-        
+        let expression = NSExpression(format: numericExpression)
+        let result = expression.expressionValue(with: nil, context: nil) as! Double
         clearAll()
         return String(result)
         
     }
     
     func clearAll() {
-        operationString = ""
+        numericExpression = ""
         nextNumber = ""
     }
     
@@ -105,24 +90,6 @@ class Calculator {
     private func getMeaninglessNumberFor(symbol: String) -> Int {
         let numbers = ["+":0, "-":0, "*":1, "/":1]
         return numbers[symbol] ?? 1
-    }
-    
-    private func performOperation(leftNum: Float, rightNum: Float, symbol: String) throws -> Float {
-        switch symbol {
-        case "+":
-            return leftNum + rightNum
-        case "-":
-            return leftNum - rightNum
-        case "*":
-            return leftNum * rightNum
-        case "/":
-            if (rightNum == 0) {
-                throw CaculatorError.divByZero
-            }
-            return leftNum / rightNum
-        default:
-            throw CaculatorError.unknownSymbol
-        }
     }
     
 }

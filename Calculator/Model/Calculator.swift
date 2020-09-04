@@ -22,6 +22,7 @@ class Calculator {
     //MARK:Variables
     
     var numericExpression: String = ""
+    var previousExpression: String = ""
     var nextNumber: String = ""
     
     //MARK: Public Functions
@@ -32,6 +33,7 @@ class Calculator {
         }
         if digit == "." && nextNumber.contains(".") {return}
         nextNumber += digit
+        previousExpression += digit
     }
     
     func deleteLastDigit() {
@@ -43,18 +45,27 @@ class Calculator {
         guard isOperationSymbol(symbol) else {
             return
         }
-        if !numericExpression.isEmpty && String(numericExpression.last!) == symbol && nextNumber.isEmpty {
+        previousExpression = ""
+        if !numericExpression.isEmpty && nextNumber.isEmpty {
             numericExpression.removeLast()
             numericExpression += symbol
+            previousExpression += symbol
             return
         }
         numericExpression.append(nextNumber)
         nextNumber = ""
         numericExpression += symbol
+        previousExpression += symbol
     }
     
     func calculate() -> String {
-        numericExpression.append(nextNumber)
+        guard !(previousExpression.isEmpty && numericExpression.isEmpty) else {return ""}
+        if (!previousExpression.isEmpty && numericExpression.isEmpty) {
+            numericExpression.append(nextNumber)
+            numericExpression.append(previousExpression)
+        } else {
+            numericExpression.append(nextNumber)
+        }
         let numbers = numericExpression.components(separatedBy: ["+","-","*","/"])
         let symbols = numericExpression.filter({(char) in return Int(String(char)) == nil && char != "."})
         if (numbers.count - 1 != symbols.count) {

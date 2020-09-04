@@ -65,7 +65,11 @@ extension DisplayViewController: Displayable {
     }
     
     func removeLastInput() {
-        self.inputLabel.text = String((self.inputLabel.text ?? "").dropLast())
+        self.inputLabel.text?.removeLast()
+    }
+    
+    func removeLastTop() {
+        self.operationLabel.text?.removeLast()
     }
 }
 

@@ -33,6 +33,7 @@ class Calculator {
         }
         if digit == "." && nextNumber.contains(".") {return}
         nextNumber += digit
+        guard !previousExpression.isEmpty else {return}
         previousExpression += digit
     }
     
@@ -59,21 +60,23 @@ class Calculator {
     }
     
     func calculate() -> String {
-        guard !(previousExpression.isEmpty && numericExpression.isEmpty) else {return ""}
+        guard !(previousExpression.isEmpty && numericExpression.isEmpty) else {return nextNumber}
         if (!previousExpression.isEmpty && numericExpression.isEmpty) {
             numericExpression.append(nextNumber)
             numericExpression.append(previousExpression)
         } else {
             numericExpression.append(nextNumber)
         }
-        let numbers = numericExpression.components(separatedBy: ["+","-","*","/"])
+        var numbers = numericExpression.components(separatedBy: ["+","-","*","/"])
+        numbers = numbers.map({(num) in return num.last == "." ? num + "0" : num})
         let symbols = numericExpression.filter({(char) in return Int(String(char)) == nil && char != "."})
         if (numbers.count - 1 != symbols.count) {
             numericExpression.append(String(getMeaninglessNumberFor(symbol: String(symbols.last!))))
         }
         let expression = NSExpression(format: numericExpression)
         let result = expression.expressionValue(with: nil, context: nil) as! Double
-        clearAll()
+        numericExpression = ""
+        nextNumber = ""
         self.nextNumber = String(result)
         return self.nextNumber
     }
@@ -81,6 +84,7 @@ class Calculator {
     func clearAll() {
         numericExpression = ""
         nextNumber = ""
+        previousExpression = ""
     }
     
     func nextNumberLength() -> Int {
@@ -92,11 +96,13 @@ class Calculator {
         return nextNumber.contains(".")
     }
     
-    //MARK: Private functions
-    
-    private func isOperationSymbol(_ symbol: String) -> Bool {
+    func isOperationSymbol(_ symbol: String) -> Bool {
         return ["+","-","*","/"].contains(symbol)
     }
+    
+    //MARK: Private functions
+    
+    
     
     private func getMeaninglessNumberFor(symbol: String) -> Int {
         let numbers = ["+":0, "-":0, "*":1, "/":1]

@@ -17,4 +17,5 @@ protocol Displayable {
     func removeLastInput()
     func moveBotToTop()
     func removeLastTop()
+    func clearTop()
 }

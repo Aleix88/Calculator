@@ -71,5 +71,9 @@ extension DisplayViewController: Displayable {
     func removeLastTop() {
         self.operationLabel.text?.removeLast()
     }
+    
+    func clearTop() {
+        self.operationLabel.text = ""
+    }
 }
 

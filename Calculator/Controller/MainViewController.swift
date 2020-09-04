@@ -48,54 +48,79 @@ class MainViewController: UIViewController {
 
 extension MainViewController: CellButtonDelegate {
     
+    func clear() {
+        self.calulator.clearAll()
+        self.displayViewController?.clearDisplay()
+        self.lastResult = ""
+        self.lastSymbolWasOperator = false
+    }
+    
+    func resolve() {
+        self.lastSymbolWasOperator = false
+        let result = calulator.calculate()
+        if (!self.lastResult.isEmpty && !calulator.isOperationSymbol(String(self.lastResult.first!))) {
+            self.displayViewController?.clearTop()
+        }
+        if (!self.lastResult.isEmpty && calulator.isOperationSymbol(String(self.lastResult.first!))) {
+            self.displayViewController?.topText(text: self.lastResult + self.lastExpression)
+        } else {
+            self.displayViewController?.moveBotToTop()
+        }
+        self.displayViewController?.bottomText(text: result)
+        self.lastResult = result
+    }
+    
+    func delete() {
+        self.lastSymbolWasOperator = false
+        self.calulator.deleteLastDigit()
+        self.displayViewController?.removeLastInput()
+    }
+    
+    func addOperator(operatorSymbol: String) {
+        if (self.lastSymbolWasOperator) {self.displayViewController?.removeLastTop()}
+        self.lastExpression = ""
+        self.lastSymbolWasOperator = true
+        self.calulator.addOperationSymbol(symbol: operatorSymbol)
+        if (!self.lastResult.isEmpty) {
+            self.displayViewController?.topText(text: self.lastResult)
+            self.displayViewController?.bottomText(text: "")
+            self.displayViewController?.addTopChar(char: operatorSymbol)
+            self.lastExpression += operatorSymbol
+            self.lastResult = ""
+            return
+        }
+        self.displayViewController?.moveBotToTop()
+        self.displayViewController?.addTopChar(char: operatorSymbol)
+        self.lastExpression += operatorSymbol
+    }
+    
+    func addNumber(number: String) {
+        guard self.calulator.nextNumberLength() < self.maxNumberLength else {return}
+        if number == "." && self.calulator.nextNumberIsDecimal() {return}
+        self.lastSymbolWasOperator = false
+        self.calulator.addDigit(digit: number)
+        self.displayViewController?.addBottomChar(char: number)
+        self.lastExpression += number
+    }
+    
     func didClickButton(type: ButtonType, content: String?) {
         guard let content = content else {return}
         switch type {
         case .C:
-            self.calulator.clearAll()
-            self.displayViewController?.clearDisplay()
-            self.lastResult = ""
-            self.lastSymbolWasOperator = false
+            clear()
         break
         case .remove:
-            self.lastSymbolWasOperator = false
-            self.calulator.deleteLastDigit()
-            self.displayViewController?.removeLastInput()
+            delete()
         break
         case .equal:
-            self.lastSymbolWasOperator = false
-            let result = calulator.calculate()
-            if (!self.lastResult.isEmpty) {
-                self.displayViewController?.topText(text: self.lastResult + self.lastExpression)
-            } else {
-                self.displayViewController?.moveBotToTop()
-            }
-            self.displayViewController?.bottomText(text: result)
-            self.lastResult = result
+            resolve()
             break
         case .sum, .divide, .multiply, .substract:
-            if (self.lastSymbolWasOperator) {self.displayViewController?.removeLastTop()}
-            self.lastExpression = ""
-            self.lastSymbolWasOperator = true
-            self.calulator.addOperationSymbol(symbol: content)
-            if (!self.lastResult.isEmpty) {
-                self.displayViewController?.topText(text: self.lastResult)
-                self.displayViewController?.bottomText(text: "")
-                self.displayViewController?.addTopChar(char: content)
-                self.lastExpression += content
-                self.lastResult = ""
-                return
-            }
-            self.displayViewController?.moveBotToTop()
-            self.displayViewController?.addTopChar(char: content)
-            self.lastExpression += content
+            addOperator(operatorSymbol: content)
+        case .MC:
+            break
         default:
-            guard self.calulator.nextNumberLength() < self.maxNumberLength else {return}
-            if content == "." && self.calulator.nextNumberIsDecimal() {return}
-            self.lastSymbolWasOperator = false
-            self.calulator.addDigit(digit: content)
-            self.displayViewController?.addBottomChar(char: content)
-            self.lastExpression += content
+            addNumber(number: content)
         }
     }
 }
